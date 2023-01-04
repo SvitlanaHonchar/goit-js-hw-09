@@ -16,3 +16,33 @@ img {
   display: block;
   max-width: 100%;
 }
+
+button[data-start] {
+  padding-right: 15px;
+  padding-left: 15px;
+  height: 25px;
+
+  border: 1px solid #1a0d52;
+  border-radius: 4px;
+
+  background-color: rgb(179, 218, 247);
+}
+
+button[data-start]:hover {
+  cursor: pointer;
+}
+
+button[data-stop] {
+  padding-right: 15px;
+  padding-left: 15px;
+  height: 25px;
+
+  border: 1px solid #6b112c;
+  border-radius: 4px;
+
+  background-color: rgb(247, 179, 226);
+}
+
+button[data-stop]:hover {
+  cursor: pointer;
+}
