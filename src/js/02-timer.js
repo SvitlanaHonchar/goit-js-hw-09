@@ -109,4 +109,5 @@ function timer(targetDate) {
 btnStartEl.addEventListener('click', () => {
   timer(new Date(`${inputEl.value}`));
   btnStartEl.disabled = true;
+  inputEl.disabled = true;
 });
