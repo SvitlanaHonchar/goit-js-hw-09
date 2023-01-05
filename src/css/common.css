@@ -46,3 +46,31 @@ button[data-stop] {
 button[data-stop]:hover {
   cursor: pointer;
 }
+
+/* timer */
+.timer {
+  display: flex;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.value {
+  font-size: 50px;
+}
+
+.label {
+  text-transform: uppercase;
+}
+
+#datetime-picker {
+  height: 25px;
+
+  border: 1px solid #1a0d52;
+  border-radius: 4px;
+}
