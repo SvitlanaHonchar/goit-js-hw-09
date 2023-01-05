@@ -82,6 +82,7 @@ function timer(targetDate) {
       secsEl.textContent == 0
     ) {
       clearInterval(timerId);
+      btnStartEl.disabled = true;
 
       const bodyEl = document.querySelector('body');
       const img =
