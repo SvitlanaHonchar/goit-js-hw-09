@@ -32,7 +32,7 @@ const options = {
       btnStartEl.disabled = true;
       return;
     }
-    btnStartEl.disabled = false;
+    // btnStartEl.disabled = false;
   },
   //   minDate: 'today',
 };
