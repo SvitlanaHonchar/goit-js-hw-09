@@ -28,7 +28,6 @@ const options = {
     // console.log(pastTime);
     if (pastTime < 0) {
       Notiflix.Notify.warning('Please choose a date in the future');
-      //   alert('Please choose a date in the future');
       btnStartEl.disabled = true;
       return;
     }
@@ -76,12 +75,16 @@ function timer(targetDate) {
     secsEl.textContent = addLeadingZero(convertMs(delta).seconds);
 
     if (
-      daysEl.textContent == 0 &&
-      hoursEl.textContent == 0 &&
-      minsEl.textContent == 0 &&
-      secsEl.textContent == 0
+      daysEl.textContent <= 0 &&
+      hoursEl.textContent <= 0 &&
+      minsEl.textContent <= 0 &&
+      secsEl.textContent <= 0
     ) {
       clearInterval(timerId);
+      daysEl.textContent = '00';
+      hoursEl.textContent = '00';
+      minsEl.textContent = '00';
+      secsEl.textContent = '00';
       btnStartEl.disabled = true;
 
       const bodyEl = document.querySelector('body');
@@ -91,19 +94,6 @@ function timer(targetDate) {
     }
   }, 1000);
 }
-
-// const timerStop = () => {
-//   if (
-//     daysEl.textContent == 0 &&
-//     hoursEl.textContent == 0 &&
-//     minsEl.textContent == 0 &&
-//     secsEl.textContent == 0
-//   ) {
-//     clearInterval(timerId);
-//   }
-// };
-
-// timerStop();
 
 // подія
 btnStartEl.addEventListener('click', () => {
