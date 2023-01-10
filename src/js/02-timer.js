@@ -85,7 +85,7 @@ function timer(targetDate) {
 
       const bodyEl = document.querySelector('body');
       const img =
-        '<img src="https://i.giphy.com/media/ibopaMJuLJDrOHWuiA/giphy.webp" alt="fanfare">';
+        '<img src="https://media.tenor.com/W9RoJfIpcesAAAAd/moskva-fire.gif" alt="fanfare">';
       bodyEl.insertAdjacentHTML('beforeend', img);
 
       return;
