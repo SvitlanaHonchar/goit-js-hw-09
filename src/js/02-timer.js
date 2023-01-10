@@ -69,18 +69,14 @@ function timer(targetDate) {
   timerId = setInterval(() => {
     const delta = new Date(targetDate) - new Date();
 
-    daysEl.textContent = convertMs(delta).days;
+    daysEl.textContent = addLeadingZero(convertMs(delta).days);
     hoursEl.textContent = addLeadingZero(convertMs(delta).hours);
     minsEl.textContent = addLeadingZero(convertMs(delta).minutes);
     secsEl.textContent = addLeadingZero(convertMs(delta).seconds);
 
-    if (
-      daysEl.textContent <= 0 &&
-      hoursEl.textContent <= 0 &&
-      minsEl.textContent <= 0 &&
-      secsEl.textContent <= 0
-    ) {
+    if (delta <= 0) {
       clearInterval(timerId);
+
       daysEl.textContent = '00';
       hoursEl.textContent = '00';
       minsEl.textContent = '00';
@@ -91,6 +87,8 @@ function timer(targetDate) {
       const img =
         '<img src="https://i.giphy.com/media/ibopaMJuLJDrOHWuiA/giphy.webp" alt="fanfare">';
       bodyEl.insertAdjacentHTML('beforeend', img);
+
+      return;
     }
   }, 1000);
 }
@@ -101,3 +99,22 @@ btnStartEl.addEventListener('click', () => {
   btnStartEl.disabled = true;
   inputEl.disabled = true;
 });
+
+// if (
+//   daysEl.textContent <= 0 &&
+//   hoursEl.textContent <= 0 &&
+//   minsEl.textContent <= 0 &&
+//   secsEl.textContent <= 0
+// ) {
+//   clearInterval(timerId);
+//   daysEl.textContent = '00';
+//   hoursEl.textContent = '00';
+//   minsEl.textContent = '00';
+//   secsEl.textContent = '00';
+//   btnStartEl.disabled = true;
+
+//   const bodyEl = document.querySelector('body');
+//   const img =
+//     '<img src="https://i.giphy.com/media/ibopaMJuLJDrOHWuiA/giphy.webp" alt="fanfare">';
+//   bodyEl.insertAdjacentHTML('beforeend', img);
+// }
