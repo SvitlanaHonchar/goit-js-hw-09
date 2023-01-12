@@ -14,7 +14,7 @@ const secsEl = document.querySelector('span[data-seconds]');
 let timerId = null;
 
 // стан кнопки при завантаженні сторінки
-btnStartEl.disabled = false;
+btnStartEl.disabled = true;
 
 // налаштування flatpickr
 const options = {
@@ -28,10 +28,10 @@ const options = {
     // console.log(pastTime);
     if (pastTime < 0) {
       Notiflix.Notify.warning('Please choose a date in the future');
-      btnStartEl.disabled = true;
+      // btnStartEl.disabled = true;
       return;
     }
-    // btnStartEl.disabled = false;
+    btnStartEl.disabled = false;
   },
   //   minDate: 'today',
 };
