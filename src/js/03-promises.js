@@ -13,35 +13,39 @@ function onSubmit(e) {
   const amount = +amountEl.value;
   let delayTime = +delayEl.value;
   const delayStepTime = +delayStepEl.value;
-  let timeoutDelay = +delayEl.value;
 
   for (let i = 1; i < amount + 1; i++) {
-    setTimeout(() => {
-      createPromise(i, delayTime);
-      delayTime += delayStepTime;
-    }, timeoutDelay);
-    timeoutDelay += delayStepTime;
+    amountEl.value = '';
+    delayEl.value = '';
+    delayStepEl.value = '';
+    // setTimeout(() => {
+    createPromise(i, delayTime)
+      .then(({ position, delay }) => {
+        Notiflix.Notify.success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
+      })
+      .catch(({ position, delay }) => {
+        Notiflix.Notify.failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
+      });
+    delayTime += delayStepTime;
   }
 }
 
 // проміси
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
-  const promise = new Promise((resolve, reject) => {
-    if (shouldResolve) {
-      resolve({ position, delay });
-    } else {
-      reject({ position, delay });
-    }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve({ position, delay });
+      } else {
+        reject({ position, delay });
+      }
+    }, delay);
   });
-
-  promise
-    .then(({ position, delay }) => {
-      Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-    })
-    .catch(({ position, delay }) => {
-      Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-    });
 }
 
 // подія
