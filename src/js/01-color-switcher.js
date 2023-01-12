@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 const btnStartEl = document.querySelector('button[data-start]');
 const btnStopEl = document.querySelector('button[data-stop]');
 
@@ -10,12 +12,11 @@ btnStopEl.disabled = true;
 
 function onBtnStartElClick() {
   document.body.style.backgroundColor = getRandomHexColor();
-
+  btnStartEl.disabled = true;
+  btnStopEl.disabled = false;
   timerId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
-  btnStartEl.disabled = true;
-  btnStopEl.disabled = false;
 }
 
 function onBtnStopElClick() {
@@ -26,7 +27,7 @@ function onBtnStopElClick() {
   btnStartEl.disabled = false;
   btnStopEl.disabled = true;
 
-  alert(`Nice color!`);
+  Notiflix.Notify.info(`Nice color!`);
 }
 
 btnStartEl.addEventListener('click', onBtnStartElClick);
