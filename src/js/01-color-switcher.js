@@ -14,7 +14,7 @@ function onBtnStartElClick() {
   document.body.style.backgroundColor = getRandomHexColor();
   btnStartEl.disabled = true;
   btnStopEl.disabled = false;
-  timerId = setInterval(() => {
+  timerID = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 }
@@ -23,7 +23,7 @@ function onBtnStopElClick() {
   if (!btnStartEl.disabled) {
     return;
   }
-  clearInterval(timerId);
+  clearInterval(timerID);
   btnStartEl.disabled = false;
   btnStopEl.disabled = true;
 
